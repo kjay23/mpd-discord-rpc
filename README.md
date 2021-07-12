@@ -1,37 +1,16 @@
 # MPD Discord RPC
 
-![crates.io](https://img.shields.io/crates/v/mpd-discord-rpc)
-![aur](https://img.shields.io/aur/version/mpd-discord-rpc-git)
-
 Displays your currently playing song / album / artist from MPD in Discord using Rich Presence. It includes support for multiple MPD hosts if, like me, you have more than one server you alternate between.
 
 The program does not require MPD or Discord to be running in order to run.
 
 Once installed just run `mpd-discord-rpc`.
 
-![status](https://f.jstanger.dev/github/mpd-discord-rpc/status.png)
+![status](https://cdn.kizu.cf/u/6xTbjgl.png)
 
 ## Installation
 
-### Cargo
-
-The cargo package can be found [here](https://crates.io/crates/mpd-discord-rpc).
-
-```
-cargo install mpd-discord-rpc
-```
-
-### Arch Linux
-
-The AUR package can be found [here](https://aur.archlinux.org/packages/mpd-discord-rpc-git).
-
-```
-yay -S mpd-discord-rpc-git
-```
-
-### NixOS
-
-I have a derivation on the way. The `[replace]` tag is causing some issues right now.
+Clone the repo and run `cargo build --release`
 
 ## Configuration
 
@@ -63,18 +42,3 @@ The following will automatically be replaced with their value from MPD:
 - `$genre`
 - `$duration`
 - `$elapsed`
-
-### Default Configuration
-
-This configuration file is automatically generated if one does not exist. 
-It is included here for reference.
-
-```toml
-id = 677226551607033903
-hosts = ["localhost:6600"]
-
-[format]
-details = "$title"
-state = "$artist / $album"
-timestamp = "elapsed"
-```
