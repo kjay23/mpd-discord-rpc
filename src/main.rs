@@ -78,8 +78,15 @@ fn main() {
             if let Err(why) = drpc.set_activity(|act| {
                 act.state(state)
                     .details(details)
-                    .assets(|asset| asset.large_image("notes").small_image("play1"))
+                    .assets(|asset| asset.large_image("notes").small_image("play"))
                     .timestamps(|timestamps| get_timestamp(&mut mpd, timestamps, timestamp_mode))
+            }) {
+                eprintln!("Failed to set activity: {}", why);
+            };
+        } else if state == State::Pause {
+            if let Err(why) = drpc.set_activity(|act| {
+                act.state("Paused")
+                    .assets(|asset| asset.large_image("notes").small_image("pause"))
             }) {
                 eprintln!("Failed to set activity: {}", why);
             };
